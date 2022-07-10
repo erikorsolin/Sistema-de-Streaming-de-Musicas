@@ -39,5 +39,5 @@ class Usuario:
         return self.endereco_monetario
     def getPlaylist_salvas(self):
         return self.playlists_salvas 
-    
-    
+
+        
