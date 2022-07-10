@@ -1,15 +1,15 @@
 class Musica:
+    # Função construtora 
     def __init__(self, nome, artista, formato, duracao):
         self.nome = nome
         self.artista = artista
         self.formato = formato
-        self.duracao = duracao
-
+        self.duracao = self.conversor(duracao)
 
 
     # Função para converter o tempo da música
-    def conversor(self):
-        lista = self.duracao.split(':')
+    def conversor(tempo_em_min):
+        lista = tempo_em_min.split(':')
         tempo = 0
         for i, w in enumerate(lista):
             if i == 0:
@@ -19,9 +19,8 @@ class Musica:
                 x = int(w)
                 tempo += x
         return tempo
-            
 
-   
+
     # Funções setters
     def setNomeCompleto(self, nome):
         self.nome = nome
