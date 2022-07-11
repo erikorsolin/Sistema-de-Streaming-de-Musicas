@@ -78,6 +78,10 @@ class Artista(Usuario):
     def setMusica(self, nome_musica, artista, formato_musica, duracao_musica):
         musica = Musica(nome_musica, artista, formato_musica, duracao_musica)
         self.musicas.append(musica)
+    def aumentarSeguidor(self):
+        self.seguidores += 1
+    def diminuirSeguidor(self):
+        self.seguidores -= 1
 
     # Funções getters
     def getSeguidores(self):
