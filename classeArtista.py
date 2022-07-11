@@ -1,3 +1,4 @@
+import string
 from classeMusica import Musica
 from classeUsuario import Usuario
 
@@ -5,10 +6,11 @@ from classeUsuario import Usuario
 class Artista(Usuario):
     def __init__(self, username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade, playlists_salvas=[]):
         super().__init__(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade, playlists_salvas)
-        self.seguidores = None
+        self.seguidores = 0
         self.ranking = None
         self.musicas = []
 
+    # Função para que o artista defina a música usando o console
     def uploadMusica(self):
         print("\nEnvie uma nova música".upper())
         
@@ -43,5 +45,44 @@ class Artista(Usuario):
         musica = Musica(nome_musica, artista, formato_musica, duracao_musica)
         self.musicas.append(musica)
 
-    #def removeMusica():
+    # Função para imprimir todas as músicas do artista no console
+    def imprimirMusicasArtista(self):
+        print("\nMúsicas de {}:".format(self.nome).upper())
+        for musica in self.musicas:
+            nome = musica.getNome()
+            duracao = "Duração: {:02d}:{:02d}".format(musica.getDuracao()[0], musica.getDuracao()[1])
+            formato = "Formato: {}".format(musica.getFormato())
+            string = "{:-<35} | {} | {}".format(nome+" ", duracao, formato)
+            print(string)
     
+    # Função para que o artista remove uma de suas músicas da plataforma
+    def removerMusica(self):
+        print("\nExcluir uma música".upper())
+        for contador, musica in enumerate(self.musicas):
+            nome = musica.getNome()
+            duracao = "Duração: {:02d}:{:02d}".format(musica.getDuracao()[0], musica.getDuracao()[1])
+            formato = "Formato: {}".format(musica.getFormato())
+            string = "{}. {:-<35} | {} | {}".format(contador+1, nome+" ", duracao, formato)
+            print(string)
+
+        # O artista escolhe a música que deseja escluir digitando o número dessa música
+        indice_musica_escolhida = str(input("Digite o número da música que deseja remover: "))
+        while indice_musica_escolhida.isdigit() == False or (int(indice_musica_escolhida)-1 not in range(len(self.musicas))):
+            indice_musica_escolhida = str(input("Número inválido, digite novamente: "))
+        
+        indice_musica_escolhida = int(indice_musica_escolhida) - 1
+        print('A música "{}" foi excluída'.format(self.musicas[indice_musica_escolhida].getNome()))
+        self.musicas.pop(indice_musica_escolhida)
+
+    # Função para definir uma música passando argumentos, sem ser preciso digitar no console
+    def setMusica(self, nome_musica, artista, formato_musica, duracao_musica):
+        musica = Musica(nome_musica, artista, formato_musica, duracao_musica)
+        self.musicas.append(musica)
+
+    # Funções getters
+    def getSeguidores(self):
+        return self.seguidores
+    def getRanking(self):
+        return self.ranking
+    def getMusicas(self):
+        return self.musicas
