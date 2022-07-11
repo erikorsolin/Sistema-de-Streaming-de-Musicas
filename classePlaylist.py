@@ -6,6 +6,12 @@ class Playlist:
         self.quantidade_musicas = quantidade_musicas # É um inteiro que representa a len(self.musicas)
         self.duracao_total = duracao_total # É uma tupla com a soma dos tempos de cada música, segue o formato (minutos, segundos)
     
+    def adicionarMusica(self, musica):
+        self.musicas.append(musica)
+
+    #def removerMusica(self, musica):
+
+
     # Funções setters
     def setNomePlaylist(self, nome_playlist):
         self.nome_playlist = nome_playlist
