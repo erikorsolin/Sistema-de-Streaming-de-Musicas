@@ -1,10 +1,12 @@
 from classeUsuario import Usuario
+from classePlaylist import Playlist
 
 # A classe Ouvinte é uma subclasse de Usuário
 class Ouvinte(Usuario):
     def __init__(self, username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade):
         super().__init__(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
         self.artistas_seguindo = []
+        self.limite_playlists = 2
 
     def followArtista(self, lista_artistas): # O argumento lista_artistas é uma lista com todas as intâncias da classe artista
         # Gerar lista de todos os artistas e imprime para o usuário
@@ -50,4 +52,16 @@ class Ouvinte(Usuario):
 
             # Aumenta em 1 o atributo self.seguidores do artista que o ouvinte começou a seguir
             artista_escolhido.diminuirSeguidor()
-            
+    
+    def criarPlaylist(self):
+        # Restrição; ouvintes podem criar até 2 playlists enquanto artistas podem criar ilimitadas playlists
+        if len(self.playlists_criadas) >= self.limite_playlists:
+            print("\nAviso".upper())
+            print("Limite de playlists criadas atingindo! Ouvintes podem criar no máximo 2 playlists.")
+        else:
+            print("\nCriar uma nova playlist".upper())
+            nome_playlist = str(input("Digite o nome da playlist: "))
+            criador = self.username
+            playlist = Playlist(str(nome_playlist), str(criador))
+            print('A playlist "{}" foi criada'.format(nome_playlist))
+            self.playlists_criadas.append(playlist) 

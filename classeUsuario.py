@@ -8,7 +8,7 @@ class Usuario:
         self.senha = senha
         self.nome = nome
         self.sexo = sexo
-        self.data_nascimento = self.converterDataNascimento(data_nascimento) # É uma tupla de 3 valores (dia, mês, ano)
+        self.data_nascimento = self.converterDataNascimento(data_nascimento) # É um dicionário {'dia': int, 'mes': int, 'ano': int}
         self.endereco_monetario = CartaoCredito(nome_completo, numero_cartao, codigo_seguranca, data_validade) # Recebe a classe CartaoCredito
         self.playlists_criadas = [] # Recebe uma lista vazia na invoção da instância, a lista irá receber valores a partir das ações do usuário
     
@@ -17,7 +17,7 @@ class Usuario:
         lista_dia_mes_ano = str(string_dia_mes_ano).split("/")
         lista_dia_mes_ano = [int(x) for x in lista_dia_mes_ano]
         dia, mes, ano = lista_dia_mes_ano
-        return (dia, mes, ano)
+        return {'dia' : dia, 'mes' : mes, 'ano' : ano}
 
     # Funções setters
     def setNome(self, nome):
@@ -54,15 +54,13 @@ class Usuario:
     # Função para que o usuário crie uma nova playlist e adicione à lista self.playlists_criadas
     def criarPlaylist(self):
         # Restrição; ouvintes podem criar até 2 playlists enquanto artistas podem criar ilimitadas playlists
-        if isinstance(self, Ouvinte) and len(self.playlists_criadas) > 2:
-            print("Limite de playlists criadas atingindo! Ouvintes podem criar no máximo 4 playlists.")
-        else:
-            nome_playlist = str(input("Digite o nome da playlist: "))
-            musicas = []
-            criador = self.username
-            playlist = Playlist(musicas, criador)
-            print('Playlist "{}" criada'.format(nome_playlist))
-            self.playlists_criadas.append(playlist) 
+        # Atingida através do polimorfismo, a classe Ouvinte tem a função criarPlaylist() que limita o máximo de playlists que podem ser criadas
+        print("\nCriar uma nova playlist".upper())
+        nome_playlist = str(input("Digite o nome da playlist: "))
+        criador = self.username
+        playlist = Playlist(str(nome_playlist), str(criador))
+        print('A playlist "{}" foi criada'.format(nome_playlist))
+        self.playlists_criadas.append(playlist) 
 
     def adicionarMusicaPlaylist(self, lista_artistas):
         # Note que o argumento lista_artistas contém a lista de todas as intâncias da classe Artista (todos os objetos Artista)
@@ -71,7 +69,7 @@ class Usuario:
             print("Você não criou nenhum playlist. Crie uma playlist para poder adicionar músicas.")
         else:
             # Imprime as playlists do usuário para que ele escolha qual irá adicionar a música
-            print("\nSuas playlists".upper())
+            print("\nAdicionar músicas na playlist".upper())
             for contador, playlist in enumerate(self.playlists_criadas):
                 print("{}. {}".format(contador+1, playlist.getNomePlaylist()))
             
@@ -83,6 +81,7 @@ class Usuario:
             playlist_escolhida = self.playlists_criadas[indice_playlist_escolhida]
 
             # Imprime todas as músicas disponíveis para serem adicionadas
+            print("\nMúsicas disponíveis".upper())
             contador = 1
             todas_musicas = []
             for artista in lista_artistas:
@@ -97,7 +96,7 @@ class Usuario:
             escolhidas_aceitas = []
             # Restrição de entrada (para que o programa não pare por erro no caso do usuário colocar uma string em escolhidas)
             for entrada in escolhidas:
-                if entrada.isdigit() == True and (int(entrada)-1 in range(contador)): # Se entrada (um dos números que o usuário colocou) for 
+                if entrada.isdigit() == True and (int(entrada)-1 in range(contador-1)): # Se entrada (um dos números que o usuário colocou) for 
                     escolhidas_aceitas.append(int(entrada)-1)
             
             # Imprime o resultado da operação de adicionar músicas para a playlist
@@ -111,9 +110,3 @@ class Usuario:
                 playlist_escolhida.adicionarMusica(todas_musicas[indice])
 
     #def removerMusicaPlaylist(self, ):
-
-
-    #def salvarPlaylist(self, ):
-
-
-    #def removerSalvarPlaylist(self, ):

@@ -1,8 +1,8 @@
 class Playlist:
     def __init__(self, nome_playlist, criador, musicas = [], quantidade_musicas=0, duracao_total=(0, 0)):
         self.nome_playlist = nome_playlist # Contém uma string com o título dado à playlist
-        self.musicas = musicas # Lista de intâncias da classe Musica
         self.criador = criador # Contém uma string com o nome do criador
+        self.musicas = musicas # Lista de intâncias da classe Musica
         self.quantidade_musicas = quantidade_musicas # É um inteiro que representa a len(self.musicas)
         self.duracao_total = duracao_total # É uma tupla com a soma dos tempos de cada música, segue o formato (minutos, segundos)
     
