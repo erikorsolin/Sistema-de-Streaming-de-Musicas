@@ -50,7 +50,7 @@ class Usuario:
         return self.playlists_salvas 
 
     # Função para que o usuário crie uma nova playlist e adicione à lista self.playlists_salvas
-    def criarPlaylist(self, ):
+    def criarPlaylist(self):
         # Restrição; ouvintes podem criar até 4 playlists enquanto artistas podem criar ilimitadas playlists
         if isinstance(self, Ouvinte) and len(self.playlists_salvas) > 4:
             print("Limite de playlists criadas atingindo! Ouvintes podem criar no máximo 4 playlists.")
