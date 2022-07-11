@@ -33,7 +33,7 @@ class Usuario:
     def setEnderacoMonetario(self, nome_completo, numero_cartao, codigo_seguranca, data_validade):
         self.endereco_monetario = CartaoCredito(nome_completo, numero_cartao, codigo_seguranca, data_validade)
     def setPlaylistSalvas(self, playlist_salvas):
-        self.playlists_criadas = playlists_criadas
+        self.playlists_criadas = playlist_salvas
     
     # Funções getters
     def getNome(self):
