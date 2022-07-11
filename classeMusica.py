@@ -4,22 +4,20 @@ class Musica:
         self.nome = nome
         self.artista = artista
         self.formato = formato
-        self.duracao = self.conversor(duracao)
-
+        self.duracao = self.conversorSegundos(duracao)
 
     # Função para converter o tempo da música
-    def conversor(tempo_em_min):
-        lista = tempo_em_min.split(':')
-        tempo = 0
-        for i, w in enumerate(lista):
+    def conversorSegundos(tempo_min_segundo):
+        lista_min_segundo = tempo_min_segundo.split(':')
+        tempo_segundos = 0
+        for i, w in enumerate(lista_min_segundo):
             if i == 0:
                 x = int(w)
-                tempo += (x*60)
+                tempo_segundos += (x*60)
             else:
                 x = int(w)
-                tempo += x
-        return tempo
-
+                tempo_segundos += x
+        return tempo_segundos
 
     # Funções setters
     def setNomeCompleto(self, nome):
