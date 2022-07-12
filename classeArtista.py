@@ -1,4 +1,3 @@
-import string
 from classeMusica import Musica
 from classeUsuario import Usuario
 
