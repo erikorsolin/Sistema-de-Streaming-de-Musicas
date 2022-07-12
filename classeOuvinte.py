@@ -17,14 +17,14 @@ class Ouvinte(Usuario):
 
         # Ouvinte seleciona o índice do artista que deseja seguir
         indice_artista_escolhido = str(input("Digite o número do artista que você deseja seguir: "))
-        while indice_artista_escolhido.isdigit() == False or (int(indice_artista_escolhido)-1 not in range(len(self.musicas))):
+        while indice_artista_escolhido.isdigit() == False or (int(indice_artista_escolhido)-1 not in range(len(lista_artistas))):
             indice_artista_escolhido = str(input("Número inválido, digite novamente: "))
         indice_artista_escolhido = int(indice_artista_escolhido) - 1
         
         # Adiciona o artista escolhido na lista de artistas_seguindo
         artista_escolhido = lista_artistas[indice_artista_escolhido]
         print("Você começou a seguir {}".format(artista_escolhido.getNome()))
-        self.artistas_seguindo.append()
+        self.artistas_seguindo.append(artista_escolhido)
         
         # Aumenta em 1 o atributo self.seguidores do artista que o ouvinte começou a seguir
         artista_escolhido.aumentarSeguidor()
@@ -41,14 +41,14 @@ class Ouvinte(Usuario):
             
             # Ouvinte seleciona o índice do artista que deseja deixar de seguir
             indice_artista_escolhido = str(input("Digite o número do artista que você deseja deixar de seguir: "))
-            while indice_artista_escolhido.isdigit() == False or (int(indice_artista_escolhido)-1 not in range(len(self.musicas))):
+            while indice_artista_escolhido.isdigit() == False or (int(indice_artista_escolhido)-1 not in range(len(self.artistas_seguindo))):
                 indice_artista_escolhido = str(input("Número inválido, digite novamente: "))
             indice_artista_escolhido = int(indice_artista_escolhido) - 1
 
             # Remove o artista escolhido da lista de artistas_seguindo
             artista_escolhido = self.artistas_seguindo[indice_artista_escolhido]
             print("Você deixou de seguir {}".format(self.artistas_seguindo[indice_artista_escolhido].getNome()))
-            artista_seguindo.pop(indice_artista_escolhido)
+            self.artistas_seguindo.pop(indice_artista_escolhido)
 
             # Aumenta em 1 o atributo self.seguidores do artista que o ouvinte começou a seguir
             artista_escolhido.diminuirSeguidor()
