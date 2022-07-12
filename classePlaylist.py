@@ -43,5 +43,3 @@ class Playlist:
         return self.musicas
     def getQuantidadeMusicas(self):
         return self.quantidade_musicas
-    
-
