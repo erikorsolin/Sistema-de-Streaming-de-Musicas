@@ -62,51 +62,101 @@ class Usuario:
         print('A playlist "{}" foi criada'.format(nome_playlist))
         self.playlists_criadas.append(playlist) 
 
-    def adicionarMusicaPlaylist(self, lista_artistas):
+    # A função editarPlaylist permite adicionar ou remover músicas de uma playlist
+    def editarPlaylist(self, lista_artistas):
         # Note que o argumento lista_artistas contém a lista de todas as intâncias da classe Artista (todos os objetos Artista)
         # É preciso passar esse argumento pois a função precisa resgatar todas as músicas armazenadas é as músicas ficam armazenadas dentro do atributo musicas de Artistas
         if len(self.playlists_criadas) == 0: # No caso do usuário não ter nenhuma playlist criada
-            print("Você não criou nenhum playlist. Crie uma playlist para poder adicionar músicas.")
+            print("Você não criou nenhuma playlist. Crie uma playlist para poder adicionar músicas.")
         else:
-            # Imprime as playlists do usuário para que ele escolha qual irá adicionar a música
-            print("\nAdicionar músicas na playlist".upper())
+            # Imprime as playlists do usuário para que ele escolha qual irá editar 
+            print("\nEditar playlist".upper())
             for contador, playlist in enumerate(self.playlists_criadas):
                 print("{}. {}".format(contador+1, playlist.getNomePlaylist()))
             
-            # Usuário escolhe em qual playlist ele deseja adicionar músicas
-            indice_playlist_escolhida = str(input("Digíte o número da playlist à qual quer adicionar músicas: "))
+            # Usuário escolhe qual playlist ele deseja editar
+            indice_playlist_escolhida = str(input("Digíte o número da playlist à qual quer editar: "))
             while indice_playlist_escolhida.isdigit() == False or (int(indice_playlist_escolhida)-1 not in range(len(self.playlists_criadas))):
                 indice_playlist_escolhida = str(input("Número inválido, digite novamente: "))
             indice_playlist_escolhida = int(indice_playlist_escolhida) - 1
             playlist_escolhida = self.playlists_criadas[indice_playlist_escolhida]
 
-            # Imprime todas as músicas disponíveis para serem adicionadas
-            print("\nMúsicas disponíveis".upper())
-            contador = 1
-            todas_musicas = []
-            for artista in lista_artistas:
-                musicas_artista = artista.getMusicas() # A variável musicas_artista irá conter uma lista de objetos músicas
-                for musica in musicas_artista: # A variável musica irá ser o objeto música para cada música da lista de musicas_artista
-                    print("{}. {}".format(contador, musica.getNome())) # Imprime no formato: 1. Nome da música
-                    todas_musicas.append(musica)
-                    contador += 1
+            # Usuário escolhe se irá adicionar ou remover músicas da playlist escolhida
+            print("\nAções possíveis".upper())
+            print("1. Adicionar músicas à playlist")
+            print("2. Remover músicas da playlist")
+            entrada = str(input("Digite o número da opção escolhida: "))
+            while entrada.isdigit() == False or (int(entrada)-1 not in range(2)):
+                entrada = str(input("Número inválido, digite novamente: "))
 
-            # Usuário deve selecionar quais músicas quer adicionar na playlist
-            escolhidas = str(input("Digite o número das músicas que deseja adicionar (separados por espaço): ")).split()
-            escolhidas_aceitas = []
-            # Restrição de entrada (para que o programa não pare por erro no caso do usuário colocar uma string em escolhidas)
-            for entrada in escolhidas:
-                if entrada.isdigit() == True and (int(entrada)-1 in range(contador-1)): # Se entrada (um dos números que o usuário colocou) for 
-                    escolhidas_aceitas.append(int(entrada)-1)
+            if entrada == '1': # Opção de adicionar músicas
+                # Imprime todas as músicas disponíveis para serem adicionadas
+                print("\nMúsicas disponíveis".upper())
+                contador = 1
+                todas_musicas = []
+                for artista in lista_artistas:
+                    musicas_artista = artista.getMusicas() # A variável musicas_artista irá conter uma lista de objetos músicas
+                    for musica in musicas_artista: # A variável musica irá ser o objeto música para cada música da lista de musicas_artista
+                        print("{}. {} | {}".format(contador, musica.getNome(), musica.getArtista())) # Imprime no formato: 1. 'Nome da música' | 'Nome artista'
+                        todas_musicas.append(musica)
+                        contador += 1
+
+                # Usuário deve selecionar quais músicas quer adicionar na playlist
+                escolhidas = str(input("Digite o número das músicas que deseja adicionar (separados por espaço): ")).split()
+                escolhidas_aceitas = []
+                # Restrição de entrada (para que o programa não pare por erro no caso do usuário colocar uma string em escolhidas)
+                for entrada in escolhidas:
+                    if entrada.isdigit() == True and (int(entrada)-1 in range(contador-1)):
+                        escolhidas_aceitas.append(int(entrada)-1)
+
+                # Imprime o resultado da operação de adicionar músicas para a playlist
+                if len(escolhidas_aceitas) == 0:
+                    print('Nenhuma música foi adicionada à playlist "{}"'.format(playlist_escolhida.getNomePlaylist()))
+                else:
+                    print("> {} músicas foram adicionadas à playlist {}".format(len(escolhidas_aceitas), playlist_escolhida.getNomePlaylist()))
+
+                # O loop adiciona as músicas escolhidas na playlist
+                for indice in escolhidas_aceitas:
+                    playlist_escolhida.adicionarMusica(todas_musicas[indice])
             
-            # Imprime o resultado da operação de adicionar músicas para a playlist
-            if len(escolhidas_aceitas) == 0:
-                print('Nenhuma música foi adicionada à playlist "{}"'.format(playlist_escolhida.getNomePlaylist()))
-            else:
-                print("{} músicas foram adicionadas à playlist {}".format(len(escolhidas_aceitas), playlist_escolhida.getNomePlaylist()))
+            elif entrada == '2': # Opção de remover músicas
+                if len(playlist_escolhida.getMusicas()) == 0: # No caso da playlist selecionada não ter nenhuma música
+                    print("\nA playlist selecionada não tem nenhuma música.")
+                else:
+                    # Imprime todas as músicas da playlist
+                    print("\nMúsicas na playlist".upper())
+                    musicas_na_playlist = []
+                    for contador, musica in enumerate(playlist_escolhida.getMusicas()):
+                        print("{}. {} | {}".format(contador+1, musica.getNome(), musica.getArtista()))
+                        musicas_na_playlist.append(musica)
 
-            # O loop adiciona as músicas escolhidas na playlist
-            for indice in escolhidas_aceitas:
-                playlist_escolhida.adicionarMusica(todas_musicas[indice])
+                    # Usuário escolhe os números das músicas as quais deseja remover
+                    escolhidas = str(input("Digite o número das músicas que deseja remover (separados por espaço): ")).split()
+                    escolhidas_aceitas = []
+                    # Restrição de entrada (para que o programa não pare por erro no caso do usuário colocar uma string em escolhidas)
+                    for entrada in escolhidas:
+                        if entrada.isdigit() == True and (int(entrada)-1 in range(len(musicas_na_playlist))): 
+                            escolhidas_aceitas.append(int(entrada)-1)
+                    
+                    # Imprime o resultado da operação de adicionar músicas para a playlist
+                    if len(escolhidas_aceitas) == 0:
+                        print('Nenhuma música foi removida da playlist "{}"'.format(playlist_escolhida.getNomePlaylist()))
+                    else:
+                        print("> {} músicas foram removidas da playlist {}".format(len(escolhidas_aceitas), playlist_escolhida.getNomePlaylist()))
 
-    #def removerMusicaPlaylist(self, ):
+                    # Passa as músicas escolhidas em uma lista como argumento para a função removerMusicas()
+                    lista_musicas_escolhidas = []
+                    for indice in escolhidas_aceitas:
+                        lista_musicas_escolhidas.append(playlist_escolhida.getMusicas()[indice])
+                    playlist_escolhida.removerMusicas(lista_musicas_escolhidas)
+            
+    # A função imprime as informações das playlists criadas pelo usuário
+    def imprimirPlaylists(self):
+        if len(self.playlists_criadas) == 0: # No caso do usuário não ter nenhuma playlist criada
+            print("Você não criou nenhuma playlist. Crie uma playlist antes de executar esse comando.")
+        else:
+            # Imprime as playlists do usuário e suas informações
+            for playlist in self.playlists_criadas:
+                print("\n> Nome da playlist: {} | Quantidade de músicas: {} | Criador: {}".format(playlist.getNomePlaylist(), playlist.getQuantidadeMusicas(), playlist.getCriador()))
+                for contador, musica in enumerate(playlist.getMusicas()):
+                    print("{}. {} | {} | {:02d}:{:02d}".format(contador+1, musica.getNome(), musica.getArtista(), musica.getDuracao()[0], musica.getDuracao()[1]))
