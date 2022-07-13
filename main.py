@@ -52,12 +52,12 @@ lista_artistas = []
 print("\nCadastrar novo usuário ou entrar em uma conta existente")
 nome_usuario = str(input("Nome de usuário: "))
 
-conferir_existencia = usuarioExistente(nome_usuario, lista_usuarios)['existencia']
-if conferir_existencia[0] == True: # Logar no usuário
+conferir_existencia = usuarioExistente(nome_usuario, lista_usuarios)
+if conferir_existencia['existencia'] == True: # Logar no usuário
     usuario_logado = conferir_existencia['user']
     menuOuvinte(usuario_logado)
 
-elif conferir_existencia[0] == False: # Criar um novo usuário
+elif conferir_existencia['existencia'] == False: # Criar um novo usuário
     print("\nCriar um novo usuário".upper())
     print("1. Ouvinte")
     print("2. Artista")
@@ -114,10 +114,12 @@ elif conferir_existencia[0] == False: # Criar um novo usuário
 
     # Gerar a classe
     if escolha == '1': # Se a opção de criar conta foi de Ouvinte com as informações coletadas
-        usuario_logado = Ouvinte(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
-        menuOuvinte(usuario_logado)
+        while True:
+            usuario_logado = Ouvinte(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
+            menuOuvinte(usuario_logado)
     
     elif escolha == '2': # Se a opção de criar conta foi de Artista com as informações coletadas
-        usuario_logado = Artista(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
-        menuArtista(usuario_logado)
+        while True:
+            usuario_logado = Artista(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
+            menuArtista(usuario_logado)
  
