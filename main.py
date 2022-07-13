@@ -21,6 +21,9 @@ def menuOuvinte(user):
     print("6. Excluir uma playlist")
     print("7. Ver informações do seu cartão de crédito")
     print("8. Deslogar")
+    escolha = str(input('Digite o número da opção escolhida: '))
+    while escolha.isdigit() == False or (int(escolha)-1 not in range(8)):
+        escolha = str(input('Escolha inválida, digite novamente: '))
 
 # Todas as opções para se for um usuário logado for Artista
 def menuArtista(user):
@@ -35,6 +38,9 @@ def menuArtista(user):
     print("8. Ver todas suas músicas")
     print("9. Ver informações do seu cartão de crédito")
     print("10. Deslogar")
+    escolha = str(input('Digite o número da opção escolhida: '))
+    while escolha.isdigit() == False or (int(escolha)-1 not in range(10)):
+        escolha = str(input('Escolha inválida, digite novamente: '))
 
 # Variáveis que armazenam as informações criadas durante a execução do programa
 lista_usuarios = []
@@ -104,7 +110,7 @@ elif conferir_existencia[0] == False: # Criar um novo usuário
     ano = input('Ano: ')
     while ano.isdigit() == False or int(ano) < 22: # Restrição de ano
         ano = input('Inválido, digite o ano novamente: ')
-    validade = (mes + '/' + ano)
+    data_validade = (mes + '/' + ano)
 
     # Gerar a classe
     if escolha == '1': # Se a opção de criar conta foi de Ouvinte com as informações coletadas
@@ -114,128 +120,4 @@ elif conferir_existencia[0] == False: # Criar um novo usuário
     elif escolha == '2': # Se a opção de criar conta foi de Artista com as informações coletadas
         usuario_logado = Artista(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
         menuArtista(usuario_logado)
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-if perfil_usuário == 1:
-
-    #AÇÕES QUE O OUVINTE PODE FAZER (Objeto p1)
-    print('Escolha a a ação que deseja realizar')
-    print('1 - ver músicas disponíveis\n2 - Ver artistas da plataforma\n3 - Seguir um artista\n4 - Deixar de seguir um artista\n5 - Criar uma playlist\n6 - Excluir uma playlist')          
-    acao = int(input())
-    while acao < 1 or acao > 5:  # retrição para a entrada da ação
-        print('Ação inválida. Digite novamente')
-        acao = int(input())
-    
-    if acao == 1:
-
-
-    
-
-
-
-
-    elif acao == 2:
-
-
-
-
-
-
-
-    elif acao == 3:
-
-
-
-
-
-
-
-
-
-    elif acao == 4:
-
-
-
-
-
-
-    elif acao == 5:
-    
-
-
-
-
-
-
-# OBTENDO OS ATRIBUTOS PARA INSTANCIAR OBJETOS (ARTISTA)
-else:
-
-
-    # AÇÕES QUE O ARTISTA PODE FAZER
-    print('Escolha a ação que deseja realizar')
-    print('1 - Ver músicas disponíveis/n2 - Ver artistas da plataforma/n3 - Enviar uma música/n4 - Excluir uma música/n5 - Criar uma playlist/n6 -  Excluir uma playlist/n7 - Ver suas músicas')
-    acao = int(input())
-
-    # Restrição da entrada
-    while acao < 1 or acao > 7:
-        print('Ação inválida. Digite novamente')
-        acao = int(input())
-
-    if acao == 1:
-    
-
-
-
-    elif acao == 2:
-    
-
-
-
-
-    elif acao == 3:
-         
-
-    
-
-
-
-
-    elif acao == 4:
-    
-
-
-
-
-    elif acao == 5:
-    
-
-
-
-
-
-    elif acao == 6:
-    
-
-
-
-
-
-    elif acao == 7:
-
-
-
+ 
