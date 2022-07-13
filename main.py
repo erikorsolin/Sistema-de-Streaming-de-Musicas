@@ -70,7 +70,7 @@ elif conferir_existencia['existencia'] == False: # Criar um novo usuário
     
     print("\nRegistrando novo usuário".upper())
     # Username
-    username = input('Informe o username: ').lower()
+    username = nome_usuario.lower()
     # Senha
     senha = input('Informe a senha: ')
     # Nome
@@ -91,7 +91,7 @@ elif conferir_existencia['existencia'] == False: # Criar um novo usuário
     ano = str(input("Digite seu ano de nascimento: "))
     while ano.isdigit() == False or int(ano) < 1900 or int(ano) > 2022:
         ano = str(input("Ano inválido, digite novamente: "))
-    data_nascimento = dia + '/' + mes + '/' + ano
+    data_nascimento = str(int(dia)) + '/' + str(int(mes)) + '/' + str(int(ano)) # Converter para int elimina 0's desnecessários
     
     # Informações do cartão
     print("\nDigite as informações do cartão de crédito para a cobrança/depósito")
