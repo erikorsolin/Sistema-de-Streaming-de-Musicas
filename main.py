@@ -68,38 +68,40 @@ elif conferir_existencia['existencia'] == False: # Criar um novo usuário
     # Argumentos classe Ouvinte: username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade
     # Argumentos classe Artista: username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade
     
+    print("\nRegistrando novo usuário".upper())
     # Username
     username = input('Informe o username: ').lower()
     # Senha
     senha = input('Informe a senha: ')
     # Nome
-    nome = input('Informe o seu nome: ').capitalize()
+    nome = input('Informe o seu nome: ').title()
     # Sexo
     sexo = input('Informe seu sexo [M/F]: ').upper()  
-    while sexo != 'F' or sexo != 'M':
+    while sexo != 'F' and sexo != 'M':
         sexo = input('Sexo inválido, digite novamente: ').upper()
     
     # Data de nascimento
     print("\nInforme sua data de nascimento".upper())
-    dia = str(input("Digite seu dia de nascimento"))
+    dia = str(input("Digite seu dia de nascimento: "))
     while dia.isdigit() == False or int(dia) < 1 or int(dia) > 31:
         dia = str(input("Dia inválido, digite novamente: "))
-    mes = str(input("Digite seu mês de nascimento"))
+    mes = str(input("Digite seu mês de nascimento: "))
     while mes.isdigit() == False or int(mes) < 1 or int(mes) > 12:
         mes = str(input("Mês inválido, digite novamente: "))
-    ano = str(input("Digite seu ano de nascimento"))
+    ano = str(input("Digite seu ano de nascimento: "))
     while ano.isdigit() == False or int(ano) < 1900 or int(ano) > 2022:
         ano = str(input("Ano inválido, digite novamente: "))
     data_nascimento = dia + '/' + mes + '/' + ano
     
     # Informações do cartão
-    nome_completo = input('Informe seu nome completo') 
+    print("\nDigite as informações do cartão de crédito para a cobrança/depósito")
+    nome_completo = input('Nome do titular: ') 
     while nome_completo.isdigit() == True: # Restrição do nome completo
         nome_completo = input('Nome inválido, digite novamente: ')
-    numero_cartao = input('Informe o número do cartão: ')
+    numero_cartao = input('Número do cartão: ')
     while numero_cartao.isdigit() == False: # Restrição do numero do cartão                
         numero_cartao = input('Número inválido, digite novamente: ')
-    codigo_seguranca = input('Informe o código de segurança do cartão: ')
+    codigo_seguranca = input('Código de segurança: ')
     while codigo_seguranca.isdigit() == False or len(codigo_seguranca) != 3: # Restrição do código de segurança do cartão             
         codigo_seguranca = input('Código inváido, digite novamente: ')
 
