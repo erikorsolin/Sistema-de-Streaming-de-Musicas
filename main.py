@@ -96,16 +96,16 @@ elif conferir_existencia['existencia'] == False: # Criar um novo usuário
     # Informações do cartão
     print("\nDigite as informações do cartão de crédito para a cobrança/depósito")
     nome_completo = input('Nome do titular: ') 
-    while nome_completo.isdigit() == True: # Restrição do nome completo
-        nome_completo = input('Nome inválido, digite novamente: ')
     numero_cartao = input('Número do cartão: ')
-    while numero_cartao.isdigit() == False: # Restrição do numero do cartão                
+    while numero_cartao.isdigit() == False or len(numero_cartao) != 16: # Restrição do numero do cartão (composto por 16 caracteres numéricos)            
         numero_cartao = input('Número inválido, digite novamente: ')
+    numero_cartao = int(numero_cartao)
     codigo_seguranca = input('Código de segurança: ')
     while codigo_seguranca.isdigit() == False or len(codigo_seguranca) != 3: # Restrição do código de segurança do cartão             
         codigo_seguranca = input('Código inváido, digite novamente: ')
+    codigo_seguranca = int(codigo_seguranca)
 
-    print('\nInforme a validade do cartão'.upper()) # Validade do cartao
+    print('\nInforme a validade do cartão (formato: 8/27)'.upper()) # Validade do cartao
     mes = input('Mês: ')
     while mes.isdigit() == False or int(mes) < 1 or int(mes) > 12: # Restrição de mês
         mes = input('Inválido, digite o mês novamente: ')
