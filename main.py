@@ -64,7 +64,7 @@ lista_artistas = []
 # Ações do usuário, início do programa propriamente
 # Logar em uma conta ou criar uma conta
 while True:
-    print("\nCadastrar novo usuário ou entrar em uma conta existente")
+    print("\nCadastrar novo usuário ou entrar em uma conta existente".upper())
     nome_usuario = str(input("Nome de usuário: "))
 
     conferir_existencia = usuarioExistente(nome_usuario, lista_usuarios)
@@ -125,7 +125,7 @@ while True:
         while mes.isdigit() == False or int(mes) < 1 or int(mes) > 12: # Restrição de mês
             mes = input('Inválido, digite o mês novamente: ')
         ano = input('Ano: ')
-        while ano.isdigit() == False or int(ano) < 22: # Restrição de ano
+        while ano.isdigit() == False or int(ano) < 22 or len(ano) != 2: # Restrição de ano no formato de dois dígitos
             ano = input('Inválido, digite o ano novamente: ')
         data_validade = (mes + '/' + ano)
 
