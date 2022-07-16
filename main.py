@@ -11,7 +11,7 @@ def usuarioExistente(nome_usuario, lista_usuarios):
     return {"existencia" : False, "user" : None} # Retorna se o usuário não foi encontrado na lista
 
 # Todas as opções para se for um usuário logado for Ouvinte
-def menuOuvinte(user):
+def menuOuvinte(user, lista_artistas):
     while True:
         print("\nMenu de opções para ouvinte".upper())
         print("1. Ver músicas disponíveis")
@@ -20,8 +20,9 @@ def menuOuvinte(user):
         print("4. Deixar de seguir um artista")
         print("5. Criar uma playlist")
         print("6. Excluir uma playlist")
-        print("7. Ver informações do seu cartão de crédito")
-        print("8. Deslogar")
+        print("7. Editar uma playlist")
+        print("8. Ver informações do seu cartão de crédito")
+        print("9. Deslogar")
         escolha = str(input('Digite o número da opção escolhida: '))
         while escolha.isdigit() == False or (int(escolha)-1 not in range(8)):
             escolha = str(input('Escolha inválida, digite novamente: '))
@@ -29,31 +30,70 @@ def menuOuvinte(user):
         if escolha == '1':
             pass
 
-        elif escolha == '8': # Quando a opção 8 (deslogar) for escolhida, a função irá terminar de rodar
+        elif escolha == '9': # Quando a opção 9 (deslogar) for escolhida, a função irá terminar de rodar
             break
 
 # Todas as opções para se for um usuário logado for Artista
-def menuArtista(user):
+def menuArtista(user, lista_artistas):
     while True:
         print("\nMenu de opções para artista".upper())
         print("1. Ver músicas disponíveis")
         print("2. Ver artistas da plataforma")
-        print("3. Criar uma playlist")
-        print("4. Excluir uma playlist")
-        print("5. Ver suas estatísticas")
-        print("6. Adicionar nova música")
-        print("7. Remover nova música")
-        print("8. Ver todas suas músicas")
-        print("9. Ver informações do seu cartão de crédito")
-        print("10. Deslogar")
+        print("3. Ver suas estatísticas")
+        print("4. Adicionar nova música")
+        print("5. Remover uma música")
+        print("6. Ver todas suas músicas")
+        print("7. Criar uma playlist")
+        print("8. Excluir uma playlist")
+        print("9. Editar uma playlist")
+        print("10. Ver informações do seu cartão de crédito")
+        print("11. Deslogar")
         escolha = str(input('Digite o número da opção escolhida: '))
         while escolha.isdigit() == False or (int(escolha)-1 not in range(10)):
             escolha = str(input('Escolha inválida, digite novamente: '))
 
-        if escolha == '1':
-            pass
+        if escolha == '1': # Ver músicas disponíveis
+            print("\nMúsicas disponíveis na plataforma".upper())
+            for artista in lista_artistas:
+                lista_musicas = artista.getMusicas()
+                for contador, musica in enumerate(lista_musicas):
+                    nome_musica = musica.getNome()
+                    nome_artista = musica.getArtista()
+                    duracao = "Duração: {:02d}:{:02d}".format(musica.getDuracao()[0], musica.getDuracao()[1])
+                    print("{}. {:-<35} | {} | {}".format(contador+1, nome_musica+" ", nome_artista, duracao))
 
-        elif escolha == '10': # Quando a opção 10 (deslogar) for escolhida, a função irá terminar de rodar
+        elif escolha == '2': # Ver artistas da plataforma
+            print("\nArtistas registrados na plataforma".upper())
+            for contador, artista in enumerate(lista_artistas):
+                print("{}. {} | Seguidores: {}".format(contador+1, artista.getNome(), artista.getSeguidores()))
+
+        elif escolha == '3': # Ver suas estatísticas
+            print("\nEstatísticas de {}".format(user.getNome()).upper())
+            print("Seguidores: {}".format(user.getSeguidores))
+            print("Músicas: {}".format(len(user.getMusicas())))
+        
+        elif escolha == '4': # Adicionar nova música
+            user.uploadMusica()
+
+        elif escolha == '5': # Remover uma música
+            user.removerMusica()
+
+        elif escolha == '6': # Ver todas suas músicas
+            user.imprimirMusicasArtista()
+        
+        elif escolha == '7': # Criar uma playlist
+            user.criarPlaylist()
+        
+        elif escolha == '8': # Excluir uma playlist
+            user.excluirPlaylist()
+        
+        elif escolha == '9': # Editar uma playlist
+            user.editarPlaylist()
+        
+        elif escolha == '10': # Ver informações do seu cartão de crédito
+            user.imprimirInformacoesCartao()
+
+        elif escolha == '11': # Quando a opção 11 (deslogar) for escolhida, a função irá terminar de rodar
             break
 
 # Variáveis que armazenam as informações criadas durante a execução do programa
@@ -132,8 +172,8 @@ while True:
         # Gerar a classe
         if escolha == '1': # Se a opção de criar conta foi de Ouvinte com as informações coletadas
             usuario_logado = Ouvinte(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
-            menuOuvinte(usuario_logado)
+            menuOuvinte(usuario_logado, lista_artistas)
 
         elif escolha == '2': # Se a opção de criar conta foi de Artista com as informações coletadas
             usuario_logado = Artista(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
-            menuArtista(usuario_logado)
+            menuArtista(usuario_logado, lista_artistas)
