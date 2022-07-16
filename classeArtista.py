@@ -6,7 +6,6 @@ class Artista(Usuario):
     def __init__(self, username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade):
         super().__init__(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
         self.seguidores = 0
-        self.ranking = None
         self.musicas = []
 
     # Função para que o artista defina a música usando o console
