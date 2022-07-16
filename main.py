@@ -110,7 +110,12 @@ while True:
     conferir_existencia = usuarioExistente(nome_usuario, lista_usuarios)
     if conferir_existencia['existencia'] == True: # Logar no usuário
         usuario_logado = conferir_existencia['user']
-        menuOuvinte(usuario_logado)
+
+        # Confere se a classe armazenada em usuario_logada é instância de Ouvinte ou de Artista e mostra o menu de acordo
+        if isinstance(usuario_logado, Ouvinte):
+            menuOuvinte(usuario_logado, lista_artistas)
+        else:
+            menuArtista(usuario_logado, lista_artistas)
 
     elif conferir_existencia['existencia'] == False: # Criar um novo usuário
         print("\nCriar um novo usuário".upper())
