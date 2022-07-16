@@ -3,7 +3,7 @@ class Playlist:
         self.nome_playlist = nome_playlist # Contém uma string com o título dado à playlist
         self.criador = criador # Contém uma string com o nome do criador
         self.musicas = musicas # Lista de intâncias da classe Musica
-        self.quantidade_musicas = 0 # É um inteiro que representa a len(self.musicas)
+        self.quantidade_musicas = len(musicas) # É um inteiro que representa a len(self.musicas)
     
     def adicionarMusica(self, musica): # Adiciona uma música de cada vez
         if musica not in self.musicas: # Se a música já estiver na playlist, não irá acontecer nada
