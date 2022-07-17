@@ -27,9 +27,39 @@ def menuOuvinte(user, lista_artistas):
         while escolha.isdigit() == False or (int(escolha)-1 not in range(8)):
             escolha = str(input('Escolha inválida, digite novamente: '))
 
-        if escolha == '1':
-            pass
+        if escolha == '1': # Ver músicas disponíveis
+            print("\nMúsicas disponíveis na plataforma".upper())
+            for artista in lista_artistas:
+                lista_musicas = artista.getMusicas()
+                for contador, musica in enumerate(lista_musicas):
+                    nome_musica = musica.getNome()
+                    nome_artista = musica.getArtista()
+                    duracao = "Duração: {:02d}:{:02d}".format(musica.getDuracao()[0], musica.getDuracao()[1])
+                    print("{}. {:-<35} | {} | {}".format(contador+1, nome_musica+" ", nome_artista, duracao))
+            
+        elif escolha == '2': # Ver artistas da plataforma
+            print("\nArtistas registrados na plataforma".upper())
+            for contador, artista in enumerate(lista_artistas):
+                print("{}. {} | Seguidores: {}".format(contador+1, artista.getNome(), artista.getSeguidores()))
 
+        elif escolha == '3': # Seguir um artista
+            user.followArtista(lista_artistas)
+
+        elif escolha == '4': # Deixar de seguir um artista
+            user.unfollowArtista()
+
+        elif escolha == '5': # Criar uma playlist
+            user.criarPlaylist()
+
+        elif escolha == '6': # Excluir uma playlist
+            user.excluirPlaylist()
+
+        elif escolha == '7': # Editar uma playlist
+            user.editarPlaylist(lista_artistas)
+
+        elif escolha == '8': # Ver informações do seu cartão de crédito
+            user.imprimirInformacoesCartao()
+        
         elif escolha == '9': # Quando a opção 9 (deslogar) for escolhida, a função irá terminar de rodar
             break
 
@@ -99,6 +129,11 @@ def menuArtista(user, lista_artistas):
 # Variáveis que armazenam as informações criadas durante a execução do programa
 lista_usuarios = []
 lista_artistas = []
+
+
+# Registrando artistas prévios (para facilitar o teste do sistema)
+
+
 
 
 # Ações do usuário, início do programa propriamente
@@ -177,8 +212,11 @@ while True:
         # Gerar a classe
         if escolha == '1': # Se a opção de criar conta foi de Ouvinte com as informações coletadas
             usuario_logado = Ouvinte(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
-            menuOuvinte(usuario_logado, lista_artistas)
+            lista_usuarios.append(usuario_logado) # Adiciona para a lista de usuário
+            menuOuvinte(usuario_logado, lista_artistas) # Inicia o menu de ouvinte
 
         elif escolha == '2': # Se a opção de criar conta foi de Artista com as informações coletadas
             usuario_logado = Artista(username, senha, nome, sexo, data_nascimento, nome_completo, numero_cartao, codigo_seguranca, data_validade)
-            menuArtista(usuario_logado, lista_artistas)
+            lista_usuarios.append(usuario_logado) # Adiciona para a lista de usuário
+            lista_artistas.append(usuario_logado) # Adiciona para a lista de artistas
+            menuArtista(usuario_logado, lista_artistas) # Inicia o menu de artista
