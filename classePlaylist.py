@@ -1,9 +1,9 @@
 class Playlist:
-    def __init__(self, nome_playlist, criador, musicas = []):
+    def __init__(self, nome_playlist, criador):
         self.nome_playlist = nome_playlist # Contém uma string com o título dado à playlist
         self.criador = criador # Contém uma string com o nome do criador
-        self.musicas = musicas # Lista de intâncias da classe Musica
-        self.quantidade_musicas = len(musicas) # É um inteiro que representa a len(self.musicas)
+        self.musicas = [] # Lista de intâncias da classe Musica, por padrão é uma lista vazia
+        self.quantidade_musicas = 0 # Por padrão é 0 e irá mudar conforme as músicas forem acrescentadas e removidas
     
     def adicionarMusica(self, musica): # Adiciona uma música de cada vez
         if musica not in self.musicas: # Se a música já estiver na playlist, não irá acontecer nada
