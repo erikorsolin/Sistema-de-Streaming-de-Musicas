@@ -6,7 +6,7 @@ from classeArtista import Artista
 # Retornar True e a Classe do usuário se o nome do usuário estiver registrado no sistema
 def usuarioExistente(nome_usuario, lista_usuarios):
     for usuario in lista_usuarios:
-        if nome_usuario.lower() == usuario.getUseranme().lower():
+        if nome_usuario.lower() == usuario.getUsername().lower():
             return {"existencia" : True, "user" : usuario}
     return {"existencia" : False, "user" : None} # Retorna se o usuário não foi encontrado na lista
 
@@ -14,7 +14,7 @@ def usuarioExistente(nome_usuario, lista_usuarios):
 def menuOuvinte(user, lista_artistas):
     while True:
         print("\nMenu de opções para ouvinte".upper())
-        print("1. Ver músicas disponíveis")
+        print("1. Ver músicas disponíveis na plataforma")
         print("2. Ver artistas da plataforma")
         print("3. Seguir um artista")
         print("4. Deixar de seguir um artista")
@@ -24,7 +24,7 @@ def menuOuvinte(user, lista_artistas):
         print("8. Ver informações do seu cartão de crédito")
         print("9. Deslogar")
         escolha = str(input('Digite o número da opção escolhida: '))
-        while escolha.isdigit() == False or (int(escolha)-1 not in range(8)):
+        while escolha.isdigit() == False or (int(escolha)-1 not in range(9)):
             escolha = str(input('Escolha inválida, digite novamente: '))
 
         if escolha == '1': # Ver músicas disponíveis
@@ -67,7 +67,7 @@ def menuOuvinte(user, lista_artistas):
 def menuArtista(user, lista_artistas):
     while True:
         print("\nMenu de opções para artista".upper())
-        print("1. Ver músicas disponíveis")
+        print("1. Ver músicas disponíveis na plataforma")
         print("2. Ver artistas da plataforma")
         print("3. Ver suas estatísticas")
         print("4. Adicionar nova música")
@@ -79,7 +79,7 @@ def menuArtista(user, lista_artistas):
         print("10. Ver informações do seu cartão de crédito")
         print("11. Deslogar")
         escolha = str(input('Digite o número da opção escolhida: '))
-        while escolha.isdigit() == False or (int(escolha)-1 not in range(10)):
+        while escolha.isdigit() == False or (int(escolha)-1 not in range(11)):
             escolha = str(input('Escolha inválida, digite novamente: '))
 
         if escolha == '1': # Ver músicas disponíveis
@@ -99,7 +99,7 @@ def menuArtista(user, lista_artistas):
 
         elif escolha == '3': # Ver suas estatísticas
             print("\nEstatísticas de {}".format(user.getNome()).upper())
-            print("Seguidores: {}".format(user.getSeguidores))
+            print("Seguidores: {}".format(user.getSeguidores()))
             print("Músicas: {}".format(len(user.getMusicas())))
         
         elif escolha == '4': # Adicionar nova música
@@ -118,7 +118,7 @@ def menuArtista(user, lista_artistas):
             user.excluirPlaylist()
         
         elif escolha == '9': # Editar uma playlist
-            user.editarPlaylist()
+            user.editarPlaylist(lista_artistas)
         
         elif escolha == '10': # Ver informações do seu cartão de crédito
             user.imprimirInformacoesCartao()
@@ -132,8 +132,15 @@ lista_artistas = []
 
 
 # Registrando artistas prévios (para facilitar o teste do sistema)
-
-
+artista1 = Artista("kanyewest", "west123", "Kanye West", "M", "8/6/1977", "Kanye Omari West", 1234567812345678, 768, "12/28")
+lista_artistas.append(artista1)
+lista_usuarios.append(artista1)
+artista1.setMusica("Champion", "Kanye West", "MP3", (2, 48))
+artista1.setMusica("Touch The Sky", "Kanye West", "WAV", (3, 56))
+artista1.setMusica("Murder To Excellence", "Kanye West", "MP3", (5, 0))
+artista1.setMusica("The good, The bad, The ugly", "Kanye West", "MP3", (4, 12))
+artista1.setMusica("Hell Of a Life", "Kanye West", "AAC", (5, 28))
+artista1.setMusica("Last Call", "Kanye West", "AAC", (12, 41))
 
 
 # Ações do usuário, início do programa propriamente
