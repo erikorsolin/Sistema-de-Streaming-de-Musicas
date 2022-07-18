@@ -44,11 +44,11 @@ class Usuario:
         return self.senha 
     def getSexo(self):
         return self.sexo 
-    def setDataNascimento(self):
+    def getDataNascimento(self):
         return self.data_nascimento 
-    def setEnderacoMonetario(self):
+    def getEnderacoMonetario(self):
         return self.endereco_monetario
-    def setPlaylistSalvas(self):
+    def getPlaylistSalvas(self):
         return self.playlists_criadas 
 
     # Função para que o usuário crie uma nova playlist e adicione à lista self.playlists_criadas
