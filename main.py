@@ -150,6 +150,27 @@ artista1.setMusica("The good, The bad, The ugly", "Kanye West", "MP3", (4, 12))
 artista1.setMusica("Hell Of a Life", "Kanye West", "AAC", (5, 28))
 artista1.setMusica("Last Call", "Kanye West", "AAC", (12, 41))
 
+artista2 = Artista("kidcudi", "kudi123", "Kid Cudi", "M", "30/1/1984", "Scott Ramon Seguro Mescudi", 4321567844221234, 201, "4/25")
+lista_artistas.append(artista2)
+lista_usuarios.append(artista2)
+artista1.setMusica("Pursuit of Happiness (Nightmare)", "Kid Cudi", "AAC", (4, 55))
+artista1.setMusica("Day 'N' Night (Nightmare)", "Kid Cudi", "AAC", (3, 41))
+artista1.setMusica("Mr. Rager", "Kid Cudi", "WAV", (4, 54))
+artista1.setMusica("Erase Me", "Kid Cudi", "AAC", (3, 12))
+
+artista3 = Artista("aliciakeys", "ali123", "Alicia Keys", "F", "25/1/1981", "Alicia Augello Cook", 9856785565098753, 119, "8/28")
+lista_artistas.append(artista3)
+lista_usuarios.append(artista3)
+artista1.setMusica("City of Gods", "Alicia Keys", "MP3", (4, 16))
+artista1.setMusica("Girl on Fire", "Alicia Keys", "AAC", (3, 44))
+artista1.setMusica("Empire State of Mind", "Alicia Keys", "WAV", (4, 54))
+artista1.setMusica("Underdog", "Alicia Keys", "MP3", (3, 12))
+
+ouvinte1 = Ouvinte("andrerocco", "batata123", "André Amaral Rocco", "04/12/2003", "Andre Amaral Rocco", 1234123412341234, 123, "10/26")
+lista_usuarios.append(ouvinte1)
+ouvinte2 = Ouvinte("erikorsolin", "pipoca123", "Erik Orsolin de Paula", "04/02/2004", "Joao Augusto Santos", 4321432143214321, 321, "8/27")
+lista_usuarios.append(ouvinte1)
+
 
 # Ações do usuário, início do programa propriamente
 # Logar em uma conta ou criar uma conta
