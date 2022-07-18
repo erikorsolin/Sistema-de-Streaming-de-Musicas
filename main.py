@@ -166,9 +166,9 @@ artista1.setMusica("Girl on Fire", "Alicia Keys", "AAC", (3, 44))
 artista1.setMusica("Empire State of Mind", "Alicia Keys", "WAV", (4, 54))
 artista1.setMusica("Underdog", "Alicia Keys", "MP3", (3, 12))
 
-ouvinte1 = Ouvinte("andrerocco", "batata123", "André Amaral Rocco", "04/12/2003", "Andre Amaral Rocco", 1234123412341234, 123, "10/26")
+ouvinte1 = Ouvinte("andrerocco", "batata123", "André Amaral Rocco", "M", "04/12/2003", "Andre Amaral Rocco", 1234123412341234, 123, "10/26")
 lista_usuarios.append(ouvinte1)
-ouvinte2 = Ouvinte("erikorsolin", "pipoca123", "Erik Orsolin de Paula", "04/02/2004", "Joao Augusto Santos", 4321432143214321, 321, "8/27")
+ouvinte2 = Ouvinte("erikorsolin", "pipoca123", "Erik Orsolin de Paula", "M", "04/02/2004", "Joao Augusto Santos", 4321432143214321, 321, "8/27")
 lista_usuarios.append(ouvinte1)
 
 
