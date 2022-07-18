@@ -21,10 +21,11 @@ def menuOuvinte(user, lista_artistas):
         print("5. Criar uma playlist")
         print("6. Excluir uma playlist")
         print("7. Editar uma playlist")
-        print("8. Ver informações do seu cartão de crédito")
-        print("9. Deslogar")
+        print("8. Ver informações da sua playlist")
+        print("9. Ver informações do seu cartão de crédito")
+        print("10. Deslogar")
         escolha = str(input('Digite o número da opção escolhida: '))
-        while escolha.isdigit() == False or (int(escolha)-1 not in range(9)):
+        while escolha.isdigit() == False or (int(escolha)-1 not in range(10)):
             escolha = str(input('Escolha inválida, digite novamente: '))
 
         if escolha == '1': # Ver músicas disponíveis
@@ -57,10 +58,13 @@ def menuOuvinte(user, lista_artistas):
         elif escolha == '7': # Editar uma playlist
             user.editarPlaylist(lista_artistas)
 
-        elif escolha == '8': # Ver informações do seu cartão de crédito
+        elif escolha == '8': # Ver informações da sua playlist
+            user.imprimirPlaylists()
+
+        elif escolha == '9': # Ver informações do seu cartão de crédito
             user.imprimirInformacoesCartao()
         
-        elif escolha == '9': # Quando a opção 9 (deslogar) for escolhida, a função irá terminar de rodar
+        elif escolha == '10': # Quando a opção 9 (deslogar) for escolhida, a função irá terminar de rodar
             break
 
 # Todas as opções para se for um usuário logado for Artista
@@ -76,10 +80,11 @@ def menuArtista(user, lista_artistas):
         print("7. Criar uma playlist")
         print("8. Excluir uma playlist")
         print("9. Editar uma playlist")
-        print("10. Ver informações do seu cartão de crédito")
-        print("11. Deslogar")
+        print("10. Ver informações da sua playlist")
+        print("11. Ver informações do seu cartão de crédito")
+        print("12. Deslogar")
         escolha = str(input('Digite o número da opção escolhida: '))
-        while escolha.isdigit() == False or (int(escolha)-1 not in range(11)):
+        while escolha.isdigit() == False or (int(escolha)-1 not in range(12)):
             escolha = str(input('Escolha inválida, digite novamente: '))
 
         if escolha == '1': # Ver músicas disponíveis
@@ -120,10 +125,13 @@ def menuArtista(user, lista_artistas):
         elif escolha == '9': # Editar uma playlist
             user.editarPlaylist(lista_artistas)
         
-        elif escolha == '10': # Ver informações do seu cartão de crédito
+        elif escolha == '10': # Ver informações da sua playlist
+            user.imprimirPlaylists()
+
+        elif escolha == '11': # Ver informações do seu cartão de crédito
             user.imprimirInformacoesCartao()
 
-        elif escolha == '11': # Quando a opção 11 (deslogar) for escolhida, a função irá terminar de rodar
+        elif escolha == '12': # Quando a opção 11 (deslogar) for escolhida, a função irá terminar de rodar
             break
 
 # Variáveis que armazenam as informações criadas durante a execução do programa
