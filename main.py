@@ -21,7 +21,7 @@ def menuOuvinte(user, lista_artistas):
         print("5. Criar uma playlist")
         print("6. Excluir uma playlist")
         print("7. Editar uma playlist")
-        print("8. Ver informações da sua playlist")
+        print("8. Ver informações das suas playlist")
         print("9. Ver informações do seu cartão de crédito")
         print("10. Deslogar")
         escolha = str(input('Digite o número da opção escolhida: '))
@@ -58,7 +58,7 @@ def menuOuvinte(user, lista_artistas):
         elif escolha == '7': # Editar uma playlist
             user.editarPlaylist(lista_artistas)
 
-        elif escolha == '8': # Ver informações da sua playlist
+        elif escolha == '8': # Ver informações das suas playlist
             user.imprimirPlaylists()
 
         elif escolha == '9': # Ver informações do seu cartão de crédito
@@ -80,7 +80,7 @@ def menuArtista(user, lista_artistas):
         print("7. Criar uma playlist")
         print("8. Excluir uma playlist")
         print("9. Editar uma playlist")
-        print("10. Ver informações da sua playlist")
+        print("10. Ver informações das suas playlist")
         print("11. Ver informações do seu cartão de crédito")
         print("12. Deslogar")
         escolha = str(input('Digite o número da opção escolhida: '))
@@ -125,7 +125,7 @@ def menuArtista(user, lista_artistas):
         elif escolha == '9': # Editar uma playlist
             user.editarPlaylist(lista_artistas)
         
-        elif escolha == '10': # Ver informações da sua playlist
+        elif escolha == '10': # Ver informações das suas playlist
             user.imprimirPlaylists()
 
         elif escolha == '11': # Ver informações do seu cartão de crédito
