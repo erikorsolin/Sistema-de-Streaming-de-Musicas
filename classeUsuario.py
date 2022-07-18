@@ -32,8 +32,8 @@ class Usuario:
         self.data_nascimento = self.converterDataNascimento(data_nascimento)
     def setEnderacoMonetario(self, nome_completo, numero_cartao, codigo_seguranca, data_validade):
         self.endereco_monetario = CartaoCredito(nome_completo, numero_cartao, codigo_seguranca, data_validade)
-    def setPlaylistSalvas(self, playlist_salvas):
-        self.playlists_criadas = playlist_salvas
+    def setPlaylistSalvas(self, playlists_criadas):
+        self.playlists_criadas = playlists_criadas
     
     # Funções getters
     def getNome(self):
