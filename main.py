@@ -62,7 +62,7 @@ def menuOuvinte(user, lista_artistas):
             user.imprimirPlaylists()
 
         elif escolha == '9': # Ver informações do seu cartão de crédito
-            user.imprimirInformacoesCartao()
+            user.getEnderacoMonetario().imprimirInformacoesCartao()
         
         elif escolha == '10': # Quando a opção 9 (deslogar) for escolhida, a função irá terminar de rodar
             break
@@ -129,7 +129,7 @@ def menuArtista(user, lista_artistas):
             user.imprimirPlaylists()
 
         elif escolha == '11': # Ver informações do seu cartão de crédito
-            user.imprimirInformacoesCartao()
+            user.getEnderacoMonetario().imprimirInformacoesCartao()
 
         elif escolha == '12': # Quando a opção 11 (deslogar) for escolhida, a função irá terminar de rodar
             break

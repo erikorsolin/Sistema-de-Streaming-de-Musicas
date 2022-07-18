@@ -64,19 +64,22 @@ class Usuario:
 
     # Função para que o usuário exclua uma playlist criada
     def excluirPlaylist(self):
-        # Imprime todas as playlists dos usuário
-        print("\nExcluir uma playlist")
-        for contador, playlist in enumerate(self.playlists_criadas):
-            print("{}. {}".format(contador+1, playlist.getNomePlaylist()))
-        
-        # Recebe a entrada do usuário
-        escolhida = str(input("Digite o número da playlist que deseja excluir: "))
-        while escolhida.isdigit() == False or (int(escolhida)-1 not in range(len(self.playlists_criadas))):
-            escolhida = str(input("Número inválido, digite novamente: "))
-        indice_escolhida = int(escolhida)-1
+        if len(self.playlists_criadas) == 0:
+            print("Você não criou nenhuma playlist.")
+        else:
+            # Imprime todas as playlists dos usuário
+            print("\nExcluir uma playlist")
+            for contador, playlist in enumerate(self.playlists_criadas):
+                print("{}. {}".format(contador+1, playlist.getNomePlaylist()))
 
-        # Remove a playlist escolhida
-        self.playlists_criadas.pop(indice_escolhida)
+            # Recebe a entrada do usuário
+            escolhida = str(input("Digite o número da playlist que deseja excluir: "))
+            while escolhida.isdigit() == False or (int(escolhida)-1 not in range(len(self.playlists_criadas))):
+                escolhida = str(input("Número inválido, digite novamente: "))
+            indice_escolhida = int(escolhida)-1
+
+            # Remove a playlist escolhida
+            self.playlists_criadas.pop(indice_escolhida)
 
     # A função editarPlaylist permite adicionar ou remover músicas de uma playlist
     def editarPlaylist(self, lista_artistas):
