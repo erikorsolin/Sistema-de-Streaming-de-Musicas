@@ -8,6 +8,14 @@ class Ouvinte(Usuario):
         self.artistas_seguindo = []
         self.limite_playlists = 2
 
+    # Funções setters
+    def setLimitePlaylists(self, limite_playlists):
+        self.limite_playlists = limite_playlists
+    
+    # Funções Getters
+    def getLimitePlaylists(self):
+        return self.limite_playlists
+
     def followArtista(self, lista_artistas): # O argumento lista_artistas é uma lista com todas as intâncias da classe artista
         # Gerar lista de todos os artistas e imprime para o usuário
         print("\nSeguir um artista".upper())
