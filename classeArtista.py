@@ -74,19 +74,19 @@ class Artista(Usuario):
         print('A música "{}" foi excluída'.format(self.musicas[indice_musica_escolhida].getNome()))
         self.musicas.pop(indice_musica_escolhida)
 
-    # Função para definir uma música passando argumentos, sem ser preciso digitar no console
-    def setMusica(self, nome_musica, artista, formato_musica, duracao_musica):
-        musica = Musica(nome_musica, artista, formato_musica, duracao_musica)
-        self.musicas.append(musica)
+    # Funções que alteram o atributo self.seguidores
     def aumentarSeguidor(self):
         self.seguidores += 1
     def diminuirSeguidor(self):
         self.seguidores -= 1
+    
+    # Função para definir uma música passando argumentos, sem ser preciso digitar no console
+    def setMusica(self, nome_musica, artista, formato_musica, duracao_musica):
+        musica = Musica(nome_musica, artista, formato_musica, duracao_musica)
+        self.musicas.append(musica)
 
     # Funções getters
     def getSeguidores(self):
         return self.seguidores
-    def getRanking(self):
-        return self.ranking
     def getMusicas(self):
         return self.musicas

@@ -1,9 +1,9 @@
 class CartaoCredito:
     def __init__(self, nome_completo, numero_cartao, codigo_seguranca, data_validade):
-        self.nome_completo = str(nome_completo).upper()
-        self.numero = numero_cartao
-        self.codigo_seguranca = codigo_seguranca
-        self.validade = self.converterValidade(data_validade)
+        self.nome_completo = str(nome_completo).upper() # É uma string
+        self.numero = numero_cartao # É um inteiro com exatamente 16 dígitos
+        self.codigo_seguranca = codigo_seguranca # É um inteiro com 3 dígitos
+        self.validade = self.converterValidade(data_validade) # É uma tupla no formato (mês, ano)
 
     # Converte a data de validade recebida de uma string "mês/ano" para uma tupla (mês, ano)
     def converterValidade(self, string_mes_ano):
