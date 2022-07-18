@@ -31,11 +31,16 @@ class Ouvinte(Usuario):
         
         # Adiciona o artista escolhido na lista de artistas_seguindo
         artista_escolhido = lista_artistas[indice_artista_escolhido]
-        print("Você começou a seguir {}".format(artista_escolhido.getNome()))
-        self.artistas_seguindo.append(artista_escolhido)
-        
-        # Aumenta em 1 o atributo self.seguidores do artista que o ouvinte começou a seguir
-        artista_escolhido.aumentarSeguidor()
+
+        # Confere se o usuário já não segue esse artista
+        if artista_escolhido in self.artistas_seguindo:
+            print("Você já segue esse artista")
+        else:
+            print("Você começou a seguir {}".format(artista_escolhido.getNome()))
+            self.artistas_seguindo.append(artista_escolhido) # Adiciona o artista que passou a seguir na lista de artistas seguindos
+
+            # Aumenta em 1 o atributo self.seguidores do artista que o ouvinte começou a seguir
+            artista_escolhido.aumentarSeguidor()
 
     def unfollowArtista(self):
         if len(self.artistas_seguindo) == 0: # No caso de o ouvinte não seguir nenhum artista

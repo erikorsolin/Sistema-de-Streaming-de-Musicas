@@ -14,6 +14,8 @@ class Artista(Usuario):
         
         # NOME MÚSICA E ARTISTA
         nome_musica = str(input("Nome da música: "))
+        while len(nome_musica) == 0:
+            nome_musica = str(input("Nome inválido, digite novamente: "))
         artista = self.nome
         
         # FORMATO
