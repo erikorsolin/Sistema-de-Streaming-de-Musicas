@@ -1,6 +1,6 @@
 # Sitema de Streaming de Música em Python
 
-Esse repositório contém o os arquivos relativos ao projeto semestral da matéria Programação Orientada a Objetos I (INE5402) da Universidade Federal de Santa Catarina (UFSC). O projeto foi realizado pelos estudantes [André Amaral Rocco](https://github.com/andrerocco) e [Erik Orsolin de Paula](https://github.com/erikorsolin).
+Projeto semestral da matéria Programação Orientada a Objetos I (INE5402) da Universidade Federal de Santa Catarina (UFSC). O projeto foi realizado pelos estudantes [André Amaral Rocco](https://github.com/andrerocco) e [Erik Orsolin de Paula](https://github.com/erikorsolin).
 
 ## Introdução ao projeto
 O objetivo do projeto foi de criar um sistema de Streaming de Música em Python utilizando o paradigma da orientação a objetos. 
@@ -11,6 +11,7 @@ Além disso, existem classes do tipo **Playlists** e do tipo **Música**. As pla
 Usuários do tipo Artista podem adicionar e excluir músicas no sistema, além de poderem criar playlists ilimitadas. Já usuários do tipo Ouvinte podem seguir e deixar de seguir os artistas. Ouvintes também podem criar playlists, mas estão limitados em no máximo 2 playlists por conta (aplicação de polimorfismo).
 
 O controle das classes do sistema ocorre por meio de um menu no arquivo ```main.py```. É possível fazer login em contas já criadas ou criar uma nova conta. A partir disso, o usuário consegue através do menu: 
+
 1. Ver músicas disponíveis na plataforma
 2. Ver artistas da plataforma
 3. Seguir um artista _(apenas para ouvintes)_
@@ -24,3 +25,6 @@ O controle das classes do sistema ocorre por meio de um menu no arquivo ```main.
 11. Ver informações das suas playlist
 12. Ver informações do seu cartão de crédito
 13. Deslogar
+
+### Diagrama de funcionamento das classes
+![Diagrama das classes do projeto](/extra-src/DiagramaClasses.png "Diagrama")
