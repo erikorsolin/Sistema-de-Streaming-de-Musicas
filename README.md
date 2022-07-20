@@ -27,4 +27,6 @@ O controle das classes do sistema ocorre por meio de um menu no arquivo ```main.
 13. Deslogar
 
 ### Diagrama de funcionamento das classes
-![Diagrama das classes do projeto](/extra-src/DiagramaClasses.png "Diagrama")
+<p align="center">
+  <img src="/extra-src/DiagramaClasses.png" alt="Diagrama de classes" />
+</p>
